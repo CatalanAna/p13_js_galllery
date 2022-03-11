@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p13_js_gallery</title>
+    <link href="https://www.deviantart.com/mucrush/art/Mario-Kart-FONT-TWO-F2-491860878" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        body{
+            font-family: 'Mario Kart f2';
+            src: url('fonts/mario_kart_f2.ttf');
+            font-style: normal;
+            font-weight: normal;
+            background-image: url("img/img6.jpg");
+            background-color: white;
+            color: red;
+            align-items: center;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        .container{
+            width: 540px;
+            overflow: auto;
+            margin: 40px auto;
+        }
+        .prev,.next{
+            color: white;
+            cursor: pointer;
+            margin-top: 140px;
+            padding: 20px;
+            background-color: red;
+        }
+        .slider-inner{
+            width: 500px;
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+            float: left;
+            padding: 3px;
+          
+        }
+        .slider-inner img{
+            display: none;
+          
+           
+        }
+        .slider-inner img.active{
+            display: inline-block;
+        }
+      
+        .prev{
+            position: absolute;
+            margin-left: -110px;
+            z-index: 100;
+        }
+        .next{
+            position: absolute;
+            margin-left: -20px;
+            z-index: 100;
+        }
+      
+        
+    </style>
+        <script>
+
+            $(document).ready(function(){
+        $('.next').on('click', function(){
+            var currentImg = $('.active');
+            var nextImg = currentImg.next();
+    
+            if(nextImg.length){
+                currentImg.removeClass('active').css('z-index',-10);
+                nextImg.addClass('active').css('z-index', 10);
+            }
+        });
+        $('.prev').on('click', function(){
+            var currentImg = $('.active');
+            var prevImg = currentImg.prev();
+    
+            if(prevImg.length){
+                currentImg.removeClass('active').css('z-index',-10);
+                prevImg.addClass('active').css('z-index', 10);
+            }
+        });
+     
+    
+    });
+        </script>
+</head>
+<body>
+    <div class="container">
+        <h1>MARIOKART MAGIC RACE</h1>
+        <div class="slider-outer">
+            <!-- <h2>títol</h2> -->
+            <i class="prev" alt="Prev">prev</i>
+            <div class="slider-inner">
+                <img src="img/img1.jpg" alt="un" class="active">
+                <img src="img/img2.jpg" alt="dos">
+                <img src="img/img3.jpg" alt="tres">
+                <img src="img/img4.jpg" alt="quatre">
+                <img src="img/img5.jpg" alt="cinc">
+
+            </div>
+            <i class="next" alt="Next">next</i>
+        </div>
+    </div>
+</body>
+</html>
